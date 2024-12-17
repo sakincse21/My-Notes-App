@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -20,12 +21,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -36,6 +39,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -46,6 +50,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 public class AllNotesController {
 
@@ -261,7 +266,8 @@ public class AllNotesController {
             webView.setPrefHeight(500);
             ImageView printImage = createImageView("print.png", 24, 24, () -> {
 //                String markdownContent =  renderer.render(parser.parse(note.getContent())); // Example HTML content
-                executePrintJob(webView);
+//                executePrintJob(webView);
+                exportNoteAsPNG(webView, note.getId());
 
             });
 
@@ -284,33 +290,54 @@ public class AllNotesController {
     }
 
 
-    private void executePrintJob(WebView webView) {
-        Printer printer = Printer.getDefaultPrinter();
-        if (printer == null) {
-            System.err.println("No printer found.");
-            return;
-        }
+    private void exportNoteAsPNG(WebView webView, int noteId) {
+        try {
+            WritableImage image = webView.snapshot(null, null); // Capture WebView content as an image
 
-        PrinterJob printerJob = PrinterJob.createPrinterJob(printer);
-        if (printerJob == null) {
-            System.err.println("Unable to create a PrinterJob.");
-            return;
-        }
+            // Save the image as a PNG file
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save Note as PNG");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Files", "*.png"));
+            File file = fileChooser.showSaveDialog(tilePane.getScene().getWindow());
 
-        PageLayout pageLayout = printer.createPageLayout(
-                javafx.print.Paper.A4,
-                javafx.print.PageOrientation.PORTRAIT,
-                Printer.MarginType.DEFAULT
-        );
-
-        boolean success = printerJob.printPage(pageLayout, webView);
-        if (success) {
-            printerJob.endJob();
-            System.out.println("Note printed successfully.");
-        } else {
-            System.err.println("Failed to print the note.");
+            if (file != null) {
+                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+                System.out.println("Note saved as PNG: " + file.getAbsolutePath());
+            }
+        } catch (Exception e) {
+            System.err.println("Error exporting note to PNG: " + e.getMessage());
+            e.printStackTrace();
         }
     }
+
+
+//    private void executePrintJob(WebView webView) {
+//        Printer printer = Printer.getDefaultPrinter();
+//        if (printer == null) {
+//            System.err.println("No printer found.");
+//            return;
+//        }
+//
+//        PrinterJob printerJob = PrinterJob.createPrinterJob(printer);
+//        if (printerJob == null) {
+//            System.err.println("Unable to create a PrinterJob.");
+//            return;
+//        }
+//
+//        PageLayout pageLayout = printer.createPageLayout(
+//                javafx.print.Paper.A4,
+//                javafx.print.PageOrientation.PORTRAIT,
+//                Printer.MarginType.DEFAULT
+//        );
+//
+//        boolean success = printerJob.printPage(pageLayout, webView);
+//        if (success) {
+//            printerJob.endJob();
+//            System.out.println("Note printed successfully.");
+//        } else {
+//            System.err.println("Failed to print the note.");
+//        }
+//    }
 
     private void redirectToLoginPage() {
         try {

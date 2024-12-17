@@ -11,6 +11,7 @@ module com.sakin.mynotesapp {
     requires jdk.compiler;
     requires org.apache.pdfbox;
     requires org.jsoup;
+    requires javafx.swing;
 
 
     opens com.sakin.mynotesapp to javafx.fxml;
