@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="10" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakin.mynotesapp.NoteController">
+
+    <TextArea fx:id="noteTextArea" prefHeight="300" promptText="Write your note here..." style="-fx-font-size: 14px;" wrapText="true">
+      <font>
+         <Font name="Poppins Regular" size="12.0" />
+      </font></TextArea>
+   <AnchorPane stylesheets="@styles/style.css">
+      <children>
+           <Button fx:id="saveButton" layoutY="10.0" onAction="#onSaveButtonClicked" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Save" textAlignment="CENTER" AnchorPane.bottomAnchor="10.799999999999997" AnchorPane.topAnchor="10.0">
+            <font>
+               <Font name="Poppins Regular" size="14.0" />
+            </font>
+         </Button>
+         <Button fx:id="aiButton" layoutX="65.0" layoutY="10.0" onAction="#onAIButtonClicked" style="-fx-background-color: tomato; -fx-text-fill: white; -fx-font-size: 14px;" text="Use AI" textAlignment="CENTER">
+            <font>
+               <Font name="Poppins Regular" size="12.0" />
+            </font>
+         </Button>
+      </children>
+   </AnchorPane>
+</VBox>

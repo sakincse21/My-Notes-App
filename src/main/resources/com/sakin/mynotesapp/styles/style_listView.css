@@ -1,0 +1,22 @@
+/* Smooth scaling for components */
+.list-view, .text-area {
+    -fx-border-color: #ddd;
+    -fx-background-color: #f9f9f9;
+    -fx-border-radius: 5;
+}
+
+.button {
+    -fx-background-radius: 5;
+    -fx-font-size: 14px;
+    -fx-padding: 5 15;
+}
+
+.button:hover {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: white;
+}
+
+.note-text {
+    -fx-font-size: 14px;
+    -fx-fill: #333333;
+}

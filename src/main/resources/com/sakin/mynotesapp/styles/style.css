@@ -1,0 +1,21 @@
+.button {
+    -fx-background-color: #4CAF50; /* Green background */
+    -fx-text-fill: white; /* White text */
+    -fx-background-radius: 4; /* Rounded corners */
+    -fx-padding: 5 10; /* Padding around the text */
+    -fx-font-size: 14px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 5, 0, 0, 1); /* Subtle shadow */
+    -fx-transition: all 0.2s ease-in-out; /* Smooth transition */
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Darker green on hover */
+    -fx-cursor: hand;
+}
+
+.button:pressed {
+    -fx-background-color: #3e8e41; /* Even darker green when clicked */
+    -fx-scale-x: 0.95; /* Shrink button when clicked */
+    -fx-scale-y: 0.95;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 3, 0, 0, 1);
+}

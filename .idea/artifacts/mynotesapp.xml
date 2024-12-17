@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="jpackage" name="mynotesapp">
+    <output-path>$PROJECT_DIR$/out/artifacts/mynotesapp</output-path>
+    <properties id="jpackage-properties">
+      <options>
+        <option name="version" value="1.03" />
+        <option name="copyright" value="" />
+        <option name="description" value="" />
+        <option name="vendor" value="" />
+        <option name="mainClass" value="com.sakin.mynotesapp.AllNotes" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="mynotesapp.jar">
+        <element id="module-output" name="mynotesapp" />
+      </element>
+    </root>
+  </artifact>
+</component>

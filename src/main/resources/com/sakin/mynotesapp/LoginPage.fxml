@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sakin.mynotesapp.LoginPageController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="300.0">
+               <children>
+                  <Label fx:id="usernameLabel" layoutX="66.0" layoutY="124.0" text="Username">
+                     <font>
+                        <Font name="Poppins Regular" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameBox" layoutX="67.0" layoutY="147.0" promptText="Username" style="-fx-border-radius: 8; -fx-background-color: white; -fx-border-width: 0 0 2px 0; -fx-border-color: lightgray;">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label fx:id="passwordLabel" layoutX="66.0" layoutY="194.0" text="Password">
+                     <font>
+                        <Font name="Poppins Regular" size="16.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordBox" layoutX="66.0" layoutY="217.0" promptText="Password" style="-fx-border-radius: 8; -fx-background-color: white; -fx-border-color: lightgray; -fx-border-width: 0 0 2px 0;">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </PasswordField>
+                  <Button fx:id="loginBtn" layoutX="62.0" layoutY="266.0" mnemonicParsing="false" onAction="#onClickLoginBtn" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 2px; -fx-border-color: lightgreen;" stylesheets="@styles/loginstyle.css" text="Login" textAlignment="CENTER">
+                     <font>
+                        <Font name="Poppins Regular" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="registerBtn" layoutX="172.0" layoutY="266.0" mnemonicParsing="false" onAction="#handleRegister" style="-fx-background-color: transparent; -fx-border-color: tomato; -fx-border-width: 0 0 0 2px;" stylesheets="@styles/loginstyle.css" text="Register" textAlignment="CENTER" textFill="#0b0b0b">
+                     <font>
+                        <Font name="Poppins Regular" size="16.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="registrationPageLabel" alignment="CENTER" layoutX="24.0" layoutY="63.0" prefHeight="18.0" prefWidth="252.0" text="User Login">
+                     <font>
+                        <Font name="Poppins Regular" size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="forgetBtn" layoutX="81.0" layoutY="312.0" mnemonicParsing="false" onAction="#setForgetBtn" style="-fx-background-color: transparent;" text="Forgot  Password?" textFill="#009dff" underline="true">
+                     <font>
+                        <Font name="Poppins Regular" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="400.0" prefWidth="300.0">
+               <children>
+                  <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="50.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@imgs/login.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="resultLabel" alignment="CENTER" layoutX="30.0" layoutY="266.0" prefHeight="60.0" prefWidth="240.0" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
