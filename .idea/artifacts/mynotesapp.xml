@@ -1,19 +1,14 @@
 <component name="ArtifactManager">
-  <artifact type="jpackage" name="mynotesapp">
+  <artifact type="javafx-preloader" name="mynotesapp">
     <output-path>$PROJECT_DIR$/out/artifacts/mynotesapp</output-path>
-    <properties id="jpackage-properties">
-      <options>
-        <option name="version" value="1.03" />
-        <option name="copyright" value="" />
-        <option name="description" value="" />
-        <option name="vendor" value="" />
-        <option name="mainClass" value="com.sakin.mynotesapp.AllNotes" />
-      </options>
-    </properties>
-    <root id="root">
+    <root id="archive" name="mynotesapp.jar">
       <element id="archive" name="mynotesapp.jar">
         <element id="module-output" name="mynotesapp" />
       </element>
+      <element id="library" level="project" name="org.json" />
+      <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.10.1" />
+      <element id="dir-copy" path="$USER_HOME$/Downloads/javafx-sdk-23.0.1/lib" />
+      <element id="library" level="project" name="mysql-connector-j-9.1.0" />
     </root>
   </artifact>
 </component>
